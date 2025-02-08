@@ -16,20 +16,20 @@
 
 </head>
 
-<body class="bg-[#060606] text-white max-w-7xl mx-auto font-hanken-grotesk">
+<body class="bg-black text-white max-w-7xl mx-auto font-hanken-grotesk pb-20">
     <div class="px-10">
         <nav class="flex justify-between items-center border-b border-white/10">
             <div>
-                <x-nav-link href="/">
+                <x-nav-link href="/" as="a">
                     <img src="{{ Vite::asset('resources/images/logo.png') }}" alt="logo" class="object-cover " width="90">
                 </x-nav-link>
             </div>
 
             <div class="space-x-2 font-bold">
-                <x-nav-link href="/" :active="request()->is('/')">
+                <x-nav-link href="/" :active="request()->is('/')" as="navlink">
                     Home
                 </x-nav-link>
-                <x-nav-link href="/blogs" :active="request()->is('/blogs')">
+                <x-nav-link href="/blogs" :active="request()->is('/blogs')" as="navlink">
                     Blogs
                 </x-nav-link>
             </div>
@@ -44,11 +44,7 @@
                         @csrf
                         @method('DELETE')
 
-                        <button>
-                            <x-nav-link>
-                                Log Out
-                            </x-nav-link>
-                        </button>
+                        <x-forms.button type="destructive">Log Out</x-forms.button>
                     </form>
                 </div>
             @endauth
@@ -65,7 +61,7 @@
             @endguest
         </nav>
 
-        <main>
+        <main class="mt-10 max-w-5xl mx-auto">
             {{ $slot }}
         </main>
     </div>
