@@ -18,51 +18,7 @@
 
 <body class="bg-black text-white max-w-7xl mx-auto font-hanken-grotesk pb-20">
     <div class="px-10">
-        <nav class="flex justify-between items-center border-b border-white/10">
-            <div>
-                <x-button href="/" as="a" type="none">
-                    <img src="{{ Vite::asset('resources/images/logo.png') }}" alt="logo" class="object-cover " width="90">
-                </x-button>
-            </div>
-
-            {{-- <div>
-                <x-button
-                    as="navlink"
-                    href="/"
-                    active="{{ request()->is('/') }}"
-                    type="none">
-                    Home
-                </x-button>
-            </div> --}}
-
-            @auth
-                <div class="space-x-2 font-bold flex items-center">
-                    <x-nav-link href="/jobs/create">
-                        Create a blog
-                    </x-nav-link>
-
-                    <form method="POST" action="/logout">
-                        @csrf
-                        @method('DELETE')
-
-                        <x-button type="destructive">
-                            Log Out
-                        </x-button>
-                    </form>
-                </div>
-            @endauth
-
-            @guest
-                <div class="space-x-2 font-bold">
-                    <x-button href="/register" as="a" type="link">
-                        Sign Up
-                    </x-button>
-                    <x-button type="ghost" as="a" href="/login">
-                        Login
-                    </x-button>
-                </div>
-            @endguest
-        </nav>
+        <x-navbar />
 
         <main class="mt-10 max-w-5xl mx-auto">
             {{ $slot }}
