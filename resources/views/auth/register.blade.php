@@ -24,6 +24,6 @@
             label="Password Confirmation" name="password_confirmation"
             type="password" />
 
-        <x-forms.button>Create Account</x-forms.button>
+        <x-button>Create Account</x-button>
     </x-forms.form>
 </x-layout>

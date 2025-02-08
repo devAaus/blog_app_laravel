@@ -13,6 +13,6 @@
             name="password"
             type="password" />
 
-        <x-forms.button type="primary">Login</x-forms.button>
+        <x-button type="primary">Login</x-button>
     </x-forms.form>
 </x-layout>

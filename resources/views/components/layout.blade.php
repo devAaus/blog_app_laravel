@@ -20,19 +20,20 @@
     <div class="px-10">
         <nav class="flex justify-between items-center border-b border-white/10">
             <div>
-                <x-nav-link href="/" as="a">
+                <x-button href="/" as="a" type="none">
                     <img src="{{ Vite::asset('resources/images/logo.png') }}" alt="logo" class="object-cover " width="90">
-                </x-nav-link>
+                </x-button>
             </div>
 
-            <div class="space-x-2 font-bold">
-                <x-nav-link href="/" :active="request()->is('/')" as="navlink">
+            {{-- <div>
+                <x-button
+                    as="navlink"
+                    href="/"
+                    active="{{ request()->is('/') }}"
+                    type="none">
                     Home
-                </x-nav-link>
-                <x-nav-link href="/blogs" :active="request()->is('/blogs')" as="navlink">
-                    Blogs
-                </x-nav-link>
-            </div>
+                </x-button>
+            </div> --}}
 
             @auth
                 <div class="space-x-2 font-bold flex items-center">
@@ -44,19 +45,21 @@
                         @csrf
                         @method('DELETE')
 
-                        <x-forms.button type="destructive">Log Out</x-forms.button>
+                        <x-button type="destructive">
+                            Log Out
+                        </x-button>
                     </form>
                 </div>
             @endauth
 
             @guest
                 <div class="space-x-2 font-bold">
-                    <x-nav-link href="/register">
+                    <x-button href="/register" as="a" type="link">
                         Sign Up
-                    </x-nav-link>
-                    <x-nav-link href="/login">
+                    </x-button>
+                    <x-button type="ghost" as="a" href="/login">
                         Login
-                    </x-nav-link>
+                    </x-button>
                 </div>
             @endguest
         </nav>
