@@ -31,7 +31,10 @@
 @endphp
 
 @if ($as === 'navlink' || $as === 'a')
-    <a href="{{ $href }}" class="{{ $classes }}" aria-current="{{ $active ? 'page' : 'false' }}" {{ $attributes }}>
+    <a
+        href="{{ $href }}"
+        aria-current="{{ $active ? 'page' : 'false' }}"
+        {{ $attributes->merge(['class' => $classes]) }}>
         {{ $slot }}
     </a>
 @else

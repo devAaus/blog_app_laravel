@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex flex-col items-center gap-4 max-w-3xl mx-auto">
+    <div class="flex flex-col items-center gap-4 max-w-4xl mx-auto">
         <div>
             <x-image :image="$blog->image" :width="800" />
         </div>
@@ -9,24 +9,18 @@
         </h1>
 
         <div class="flex items-center gap-3">
-            <div class="flex items-center gap-2">
-                <x-image
-                    image="{{ Vite::asset('resources/images/default-user.avif') }}"
-                    width="40"
-                    height="40"
-                    type="avatar" />
-                <a href="/{{ $blog->user->name }}" class="font-semibold text-xl">
-                    {{ $blog->user->name }}
-                </a>
-            </div>
-            <p>-</p>
-            <p class="text-gray">
-                {{ $blog->created_at->format('F j, Y') }}
-            </p>
+            <x-user-avatar
+                image="{{ Vite::asset('resources/images/default-user.avif') }}"
+                name="{{ $blog->user->name }}"
+                width="40"
+                height="40"
+                pClass="font-semibold text-xl" />
+            <p class="text-gray font-bold text-3xl">·</p>
+            <x-date date="{{ $blog->created_at }}" />
         </div>
 
         <p class="self-start mt-10">
-            {{ $blog->description }}
+            {!! $blog->description !!}
         </p>
     </div>
 </x-layout>

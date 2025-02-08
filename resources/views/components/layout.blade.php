@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,14 +15,14 @@
 
     <!-- Style -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <x-head.tinymce-config />
 </head>
 
 <body class="bg-black text-white max-w-7xl mx-auto font-hanken-grotesk pb-20">
     <div class="px-10">
         <x-navbar />
 
-        <main class="mt-10 max-w-5xl mx-auto">
+        <main class="mt-10">
             {{ $slot }}
         </main>
     </div>

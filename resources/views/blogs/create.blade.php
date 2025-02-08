@@ -7,6 +7,7 @@
             name="title" />
 
         <x-forms.text-area
+            id="myeditorinstance"
             label="Description"
             name="description" />
 
