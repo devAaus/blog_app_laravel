@@ -6,16 +6,19 @@ use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
 
     public function index()
     {
-        $blog = Blog::latest()->get();
+        $blogs = Blog::with('user')->latest()->paginate(6);
+        // $featuredBlogs = $blogs->groupBy('isFeatured');
 
         return view("blogs.index", [
-            "blogs" => $blog
+            "blogs" => $blogs,
+            // "featuredBlogs" => $featuredBlogs[1]
         ]);
     }
 
@@ -53,9 +56,19 @@ class BlogController extends Controller
             $imagePath = $request->input('imageUrl');
         }
 
+        // Generate a unique slug from title
+        $slug = Str::slug($request->title);
+
+        // Ensure the slug is unique by appending a number if needed
+        $count = Blog::where('slug', 'LIKE', "{$slug}%")->count();
+        if ($count > 0) {
+            $slug .= '-' . ($count + 1);
+        }
+
         // Create the blog post
         Blog::create([
             'title' => $request->title,
+            'slug' => $slug,
             'description' => $request->description,
             'image' => $imagePath,
             'user_id' => Auth::id(),
@@ -68,10 +81,13 @@ class BlogController extends Controller
 
 
 
-    public function show(string $id)
+    public function show(Blog $blog)
     {
-        //
+        return view('blogs.show', [
+            'blog' => $blog
+        ]);
     }
+
 
 
     public function edit(string $id)

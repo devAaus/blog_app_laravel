@@ -6,6 +6,12 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/blogs/create', [BlogController::class, 'create']);
+    Route::post('/blogs', [BlogController::class, 'store']);
+});
+Route::get('/blogs/{blog:slug}', [BlogController::class, 'show'])->name('blogs.show');
+
 
 // authentication routes
 Route::middleware('guest')->group(function () {
@@ -17,9 +23,3 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth');
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/blogs/create', [BlogController::class, 'create']);
-    Route::post('/blogs', [BlogController::class, 'store']);
-});

@@ -1,6 +1,6 @@
 @props(['blog'])
 
-<x-panel :href="$blog->title" class="flex flex-col items-center">
+<x-panel :href="$blog->slug" class="flex flex-col items-center">
     <div>
         <x-image :image="$blog->image" />
     </div>

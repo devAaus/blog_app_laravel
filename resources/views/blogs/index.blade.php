@@ -11,14 +11,17 @@
             </x-forms.form>
         </section>
 
-        <section>
+        {{-- <section>
             <x-section-heading>
                 Featured Blogs
             </x-section-heading>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+                @foreach ($featuredBlogs as $blog)
+                    <x-blog-card :$blog />
+                @endforeach
             </div>
-        </section>
+        </section> --}}
 
         <section>
             <x-section-heading>
@@ -29,6 +32,10 @@
                 @foreach ($blogs as $blog)
                     <x-blog-card :$blog />
                 @endforeach
+            </div>
+
+            <div class="mt-4">
+                {{ $blogs->links() }}
             </div>
         </section>
     </div>
