@@ -1,26 +1,28 @@
 <x-layout>
-    <div class="flex flex-col items-center gap-4 max-w-4xl mx-auto">
-        <div>
+    <section class="max-w-4xl mx-auto">
+        <div class="flex items-center justify-center">
             <x-image :image="$blog->image" :width="800" />
         </div>
 
-        <h1 class="font-bold text-center text-5xl mt-8 capitalize">
-            {{ $blog->title }}
-        </h1>
+        <div class="flex flex-col items-center gap-4 mb-20 mt-8">
+            <h1 class="font-bold text-center text-xl md:text-4xl capitalize">
+                {{ $blog->title }}
+            </h1>
 
-        <div class="flex items-center gap-3">
-            <x-user-avatar
-                image="{{ Vite::asset('resources/images/default-user.avif') }}"
-                name="{{ $blog->user->name }}"
-                width="40"
-                height="40"
-                pClass="font-semibold text-xl" />
-            <p class="text-gray font-bold text-3xl">·</p>
-            <x-date date="{{ $blog->created_at }}" />
+            <div class="flex items-center gap-3">
+                <x-user-avatar
+                    image="{{ Vite::asset('resources/images/default-user.avif') }}"
+                    name="{{ $blog->user->name }}"
+                    width="40"
+                    height="40"
+                    pClass="font-semibold text-base md:text-xl" />
+                <p class="text-grey font-bold text-3xl">·</p>
+                <x-date date="{{ $blog->created_at }}" />
+            </div>
         </div>
 
-        <p class="self-start mt-10">
+        <div class="text-white/80 text-lg">
             {!! $blog->description !!}
-        </p>
-    </div>
+        </div>
+    </section>
 </x-layout>

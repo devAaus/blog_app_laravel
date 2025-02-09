@@ -4,6 +4,6 @@
     use Carbon\Carbon;
 @endphp
 
-<p class="text-gray text-xs">
+<p class="text-grey text-xs">
     {{ Carbon::parse($date)->format('F j, Y') }}
 </p>

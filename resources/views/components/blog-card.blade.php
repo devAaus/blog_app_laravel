@@ -15,7 +15,7 @@
                 {{ Str::words($blog->title, 4, '...') }}
             </h3>
 
-            <p class="text-sm text-gray">
+            <p class="text-sm text-grey">
                 {{ Str::words(strip_tags($blog->description), 15, '...') }}
                 <a href="/blogs/{{ $blog->slug }}" class="hover:underline hover:text-white ml-2">
                     Read more

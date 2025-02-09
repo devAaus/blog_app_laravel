@@ -19,7 +19,7 @@
 </head>
 
 <body class="bg-black text-white max-w-7xl mx-auto font-hanken-grotesk pb-20">
-    <div class="px-10">
+    <div class=" px-2 md:px-10">
         <x-navbar />
 
         <main class="mt-10">

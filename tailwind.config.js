@@ -11,7 +11,7 @@ export default {
         extend: {
             colors: {
                 "black": "#09090b",
-                "gray": "#a1a1a8"
+                "grey": "#a1a1a8"
             },
             fontFamily: {
                 "hanken-grotesk": ["Hanken Grotesk", "sans-serif"]
