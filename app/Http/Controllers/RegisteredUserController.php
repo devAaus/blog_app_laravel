@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -28,7 +29,24 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Password::min(6)],
         ]);
 
-        User::create($credentials);
+        // Generate userTag from name
+        $userTagBase = '@' . Str::lower(Str::replace(' ', '', $credentials['name']));
+
+        // Ensure uniqueness by appending a random number if needed
+        $userTag = $userTagBase;
+        while (User::where('userTag', $userTag)->exists()) {
+            $userTag = $userTagBase . rand(100, 999);
+        }
+
+        // dd($credentials, $userTag);
+
+        // Create user with userTag
+        User::create([
+            'name' => $credentials['name'],
+            'email' => $credentials['email'],
+            'password' => bcrypt($credentials['password']),
+            'userTag' => $userTag,
+        ]);
 
         return redirect('/login');
     }
