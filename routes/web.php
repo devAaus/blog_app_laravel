@@ -26,4 +26,6 @@ Route::middleware('guest')->group(function () {
 Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 
+Route::get('/users/dashboard', [SessionController::class, 'index'])->middleware('auth');
+
 Route::get('/users/{user:userTag}', [UserProfileController::class, 'show'])->name('user.show');

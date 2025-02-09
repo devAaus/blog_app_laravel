@@ -21,6 +21,10 @@
                 Create a blog
             </x-button>
 
+            <x-button href="/users/dashboard" as="a" type="link">
+                Dashboard
+            </x-button>
+
             <form method="POST" action="/logout">
                 @csrf
                 @method('DELETE')
