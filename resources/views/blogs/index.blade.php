@@ -11,24 +11,12 @@
             </x-forms.form>
         </section>
 
-        {{-- <section>
-            <x-section-heading>
-                Featured Blogs
-            </x-section-heading>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-                @foreach ($featuredBlogs as $blog)
-                    <x-blog-card :$blog />
-                @endforeach
-            </div>
-        </section> --}}
-
         <section>
             <x-section-heading>
                 All Blogs
             </x-section-heading>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
                 @foreach ($blogs as $blog)
                     <x-blog-card :$blog />
                 @endforeach

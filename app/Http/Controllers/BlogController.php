@@ -13,14 +13,15 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs = Blog::with('user')->latest()->paginate(6);
-        // $featuredBlogs = $blogs->groupBy('isFeatured');
+        $blogs = Blog::with('user')->latest()->paginate(10);
+
+        // dd($blogs, $featuredBlogs);
 
         return view("blogs.index", [
             "blogs" => $blogs,
-            // "featuredBlogs" => $featuredBlogs[1]
         ]);
     }
+
 
 
     public function create()

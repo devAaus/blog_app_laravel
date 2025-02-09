@@ -1,6 +1,6 @@
-@props(['image', 'name' => null, 'width' => 60, 'height' => 60, 'pClass'])
+@props(['image', 'name' => null, 'tag', 'width' => 60, 'height' => 60, 'pClass'])
 
-<a href="/{{ $name }}" class="flex items-center gap-2">
+<a href="/users/{{ $tag }}" class="flex items-center gap-2">
     <img
         src="{{ $image ? asset($image) : Vite::asset('resources/images/default-user.jpg') }}"
         alt="user_avatar"
