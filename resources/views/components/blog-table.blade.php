@@ -23,15 +23,18 @@
                         width="64"
                         height="64" />
                 </td>
+
                 <td class="px-6 py-4 font-semibold text-white">
                     <a href="/blogs/{{ $blog->slug }}" class="hover:underline">
-                        {{ Str::words($blog->title, 8, '...') }}
+                        {{ Str::words($blog->title, 6, '...') }}
                     </a>
                 </td>
+
                 <td class="px-6 py-4 flex flex-col md:flex-row items-center gap-2">
                     <x-button href="/users/dashboard" as="a" type="success">
                         Edit
                     </x-button>
+
                     <x-button href="/users/dashboard" as="a" type="destructive">
                         Remove
                     </x-button>

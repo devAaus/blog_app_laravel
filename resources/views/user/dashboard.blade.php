@@ -13,7 +13,7 @@
                                 height="180" />
                         </div>
 
-                        <h1 class="font-bold text-4xl mt-4">
+                        <h1 class="font-bold md:text-4xl lg:text-center lg:text-2xl mt-4">
                             {{ $user->name }}
                         </h1>
 
