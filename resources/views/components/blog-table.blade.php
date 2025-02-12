@@ -2,7 +2,7 @@
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-400">
-        <thead class="text-xs  uppercase bg-gray-700 text-gray-400">
+        <thead class="text-xs uppercase border border-gray-700 text-gray-400">
             <tr>
                 <th scope="col" class="px-16 py-3">
                     <span class="sr-only">Image</span>
@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="border-b bg-gray-900 border-gray-700  hover:bg-gray-800 transition-colors duration-300">
+            <tr class="border-b border-gray-700  hover:bg-gray-800 transition-colors duration-300">
                 <td class="p-4">
                     <x-image
                         :image="$blog->image ?? Vite::asset('resources/images/default-user.avif')"
@@ -24,7 +24,7 @@
                         height="64" />
                 </td>
 
-                <td class="px-6 py-4 font-semibold text-white">
+                <td class="px-6 py-4 font-semibold text-white text-lg">
                     <a href="/blogs/{{ $blog->slug }}" class="hover:underline">
                         {{ Str::words($blog->title, 6, '...') }}
                     </a>

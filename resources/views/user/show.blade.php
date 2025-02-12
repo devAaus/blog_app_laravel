@@ -3,18 +3,7 @@
 <x-layout>
     <div class="space-y-10">
         <section class="text-center pt-6">
-            <div class="flex items-center justify-center">
-                <x-image
-                    :image="$user->avatar ?? Vite::asset('resources/images/default-user.avif')"
-                    width="180"
-                    height="180" />
-            </div>
-            <h1 class="font-bold text-4xl">
-                {{ $user->name }}
-            </h1>
-            <p class="text-grey">
-                {{ $user->userTag }}
-            </p>
+            <x-user-card :$user />
         </section>
 
         <section>
