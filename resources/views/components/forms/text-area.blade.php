@@ -1,4 +1,4 @@
-@props(['label', 'name'])
+@props(['label', 'name', 'value' => ''])
 
 @php
     $defaults = [
@@ -8,8 +8,8 @@
     ];
 @endphp
 
-<x-forms.field :$label :$name>
-    <textarea cols="4" {{ $attributes($defaults) }}>
-        {{ old($name) }}
+<x-forms.field :label="$label" :name="$name">
+    <textarea cols="4" {{ $attributes->merge($defaults) }}>
+        {{ old($name, $value) }}
     </textarea>
 </x-forms.field>

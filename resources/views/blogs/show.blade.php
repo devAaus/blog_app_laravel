@@ -1,7 +1,7 @@
 <x-layout>
     <section class="max-w-4xl mx-auto px-4">
         <div class="flex items-center justify-center">
-            <x-image :image="$blog->image" :width="800" />
+            <x-image :image="$blog->image ?? $blog->imageUrl" :width="800" />
         </div>
 
         <div class="flex flex-col items-center gap-4 mb-20 mt-8">

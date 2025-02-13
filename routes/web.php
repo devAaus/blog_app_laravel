@@ -10,9 +10,13 @@ Route::get('/', [BlogController::class, 'index']);
 Route::middleware('auth')->group(function () {
     Route::get('/blogs/create', [BlogController::class, 'create']);
     Route::post('/blogs', [BlogController::class, 'store']);
+
+    Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit']);
+    Route::patch('/blogs/{blog}', [BlogController::class, 'update']);
+
+    Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
 });
 Route::get('/blogs/{blog:slug}', [BlogController::class, 'show'])->name('blogs.show');
-
 
 // authentication routes
 Route::middleware('guest')->group(function () {
@@ -23,9 +27,9 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [SessionController::class, 'store']);
 });
 
-Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+// Change DELETE to POST for logout route
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-
+// User dashboard and profile routes
 Route::get('/users/dashboard', [SessionController::class, 'index'])->middleware('auth');
-
 Route::get('/users/{user:userTag}', [UserProfileController::class, 'show'])->name('user.show');

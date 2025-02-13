@@ -7,7 +7,7 @@
 <x-panel>
     <div class="flex flex-col min-h-[450px]">
         <div class="flex items-center justify-center">
-            <x-image :image="$blog->image" />
+            <x-image :image="$blog->image ?? $blog->imageUrl" />
         </div>
 
         <div class="pt-4 pb-8 space-y-4">

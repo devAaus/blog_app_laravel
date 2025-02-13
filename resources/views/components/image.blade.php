@@ -3,6 +3,6 @@
 <img
     src="{{ $image ? asset($image) : Vite::asset('resources/images/default.jpg') }}"
     alt="blog_image"
-    class="border object-cover rounded-xl aspect-video"
+    class="border-2 object-cover rounded-xl aspect-video"
     width="{{ $width }}"
     height="{{ $height }}">

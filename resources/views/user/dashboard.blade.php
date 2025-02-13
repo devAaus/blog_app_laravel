@@ -10,9 +10,7 @@
                 <div class="bg-white/5 shadow rounded-lg p-6">
                     <h2 class="text-xl font-bold mb-4">My Blogs</h2>
 
-                    @foreach ($user->blogs as $blog)
-                        <x-blog-table :$blog />
-                    @endforeach
+                    <x-blog-table :blogs="$user->blogs" />
                 </div>
             </div>
         </div>

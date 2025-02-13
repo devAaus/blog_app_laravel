@@ -1,4 +1,4 @@
-@props(['blog'])
+@props(['blogs'])
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-400">
@@ -16,30 +16,39 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="border-b border-gray-700  hover:bg-gray-800 transition-colors duration-300">
-                <td class="p-4">
-                    <x-image
-                        :image="$blog->image ?? Vite::asset('resources/images/default-user.avif')"
-                        width="64"
-                        height="64" />
-                </td>
+            @foreach ($blogs as $blog)
+                <tr class="border-b border-gray-700  hover:bg-gray-800 transition-colors duration-300">
+                    <td class="p-4">
+                        <x-image
+                            :image="$blog->image ?? $blog->imageUrl"
+                            width="64"
+                            height="64" />
+                    </td>
 
-                <td class="px-6 py-4 font-semibold text-white text-lg">
-                    <a href="/blogs/{{ $blog->slug }}" class="hover:underline">
-                        {{ Str::words($blog->title, 6, '...') }}
-                    </a>
-                </td>
+                    <td class="px-6 py-4 font-semibold text-white text-lg">
+                        <a href="/blogs/{{ $blog->slug }}" class="hover:underline">
+                            {{ Str::words($blog->title, 6, '...') }}
+                        </a>
+                    </td>
 
-                <td class="px-6 py-4 flex flex-col md:flex-row items-center gap-2">
-                    <x-button href="/users/dashboard" as="a" type="success">
-                        Edit
-                    </x-button>
+                    <td class="px-6 py-4 flex flex-col md:flex-row items-center gap-2">
+                        <x-button href="/blogs/{{ $blog->slug }}/edit" as="a" type="success">
+                            Edit
+                        </x-button>
 
-                    <x-button href="/users/dashboard" as="a" type="destructive">
-                        Remove
-                    </x-button>
-                </td>
-            </tr>
+                        <form method="POST" action="{{ route('blogs.destroy', $blog) }}"">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit">
+                                <x-button as="button" type="destructive">
+                                    Remove
+                                </x-button>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
